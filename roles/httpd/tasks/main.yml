@@ -1,0 +1,29 @@
+---
+
+    - name: shell run ignore errors .....
+      shell: /usr/bin/jps || /bin/true
+      ignore_errors: True
+
+    - name: ensure apache {{ name }} is at the latest version
+      yum: pkg={{name}} state=latest
+
+    - name: write the apache config file
+      template: src=httpd.conf.j2 dest=/etc/httpd/conf/httpd.conf
+      notify:
+        - restart
+
+    - name: ensure appache is running 
+      service: name={{name}} state=started
+
+    - include: add_user.yml
+
+    - include: del_user.yml
+
+    - name: copy files to remote_computer
+      copy: src=test.txt dest=/tmp/
+
+    - name: run the script echo_shell
+      script: echo.sh
+
+
+

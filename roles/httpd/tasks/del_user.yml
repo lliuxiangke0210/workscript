@@ -1,0 +1,7 @@
+ - name: delete the user
+   user: name={{item.name}}  state=absent
+   with_items:
+        - { name: 'test1' , group: 'apache'}
+        - { name: 'test2' , group: 'apache'}
+   notify:
+        - msg2

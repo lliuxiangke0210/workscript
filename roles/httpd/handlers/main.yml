@@ -1,0 +1,10 @@
+---
+  
+  - name: restart
+    service: name=httpd state=restarted
+  - name: msg1
+    debug: msg='defile 1 msg'
+  - name: msg2
+    debug: msg='defile 2 msg'
+  - name: msg3
+    debug: msg='defile 3 msg'

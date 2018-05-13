@@ -1,0 +1,10 @@
+-  name: add user by item_when
+   user: name={{ item.name}}  group={{item.group}}  state=present
+   with_items:
+        - { name: 'test1' , group: 'apache'}
+        - { name: 'test2' , group: 'apache'}
+   notify:
+        - msg3
+   tags:
+        - add_user
+   ignore_errors: True
